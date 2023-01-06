@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def parse(url):
-    if not url:
+    if not 't.me/' in url:
         pass
     else:
         url = url.replace('\n', '')
