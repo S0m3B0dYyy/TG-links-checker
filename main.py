@@ -4,14 +4,14 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def parse(url):
-    url = url.replace('\n', '').replace('https://', '').replace('http://', '')
-    url = re.search('t.me\/[a-zA-Z0-9\_]*', url)
+def parse(start_url):
+    start_url = start_url.replace('\n', '').replace('https://', '').replace('http://', '')
+    url = re.search('[a-zA-Z0-9\_]*.t.me', start_url)
 
     if not url:
-        pass
+        url = re.search('t.me.[a-zA-Z0-9\_]*', start_url)
 
-    else:
+    if url:
         url = url.group(0).strip()
         url = 'https://' + url
         response = requests.get(url)
